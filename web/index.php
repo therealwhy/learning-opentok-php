@@ -147,6 +147,11 @@ $app->post('/session/clear', 'cors', function() use ($app) {
     if ($app->storage instanceof APCStorage) {
         $app->storage->clear();
     }
+    $responseData = array();
+
+    $app->response->headers->set('Content-Type', 'application/json');
+    echo json_encode($responseData);
+
 });
 
 $app->run();
