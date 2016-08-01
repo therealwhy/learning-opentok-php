@@ -141,7 +141,7 @@ $app->map('/:x+', function($x) {
 })->via('OPTIONS');
 
 // TODO: route to clear storage
-$app->post('/session/clear', 'cors', function() use ($app) {
+$app->get('/session/clear', 'cors', function() use ($app) {
     if ($app->storage instanceof APCStorage) {
         $app->storage->clear();
     }
