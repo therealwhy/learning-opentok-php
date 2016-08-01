@@ -118,12 +118,10 @@ $app->get('/view/:archiveId', 'cors', function ($archiveId) use ($app) {
 
 // Enable CORS functionality
 function cors() {
-    // Allow from any origin
-    if (isset( $_SERVER['HTTP_ORIGIN'])) {
-        header( "Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}" );
-        header( 'Access-Control-Allow-Credentials: true' );
-        header( 'Access-Control-Max-Age: 86400' );    // cache for 1 day
-    }
+  // Allow from any origin
+  header( "Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}" );
+  header( 'Access-Control-Allow-Credentials: true' );
+  header( 'Access-Control-Max-Age: 86400' );    // cache for 1 day
 
     // Access-Control headers are received during OPTIONS requests
     if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
@@ -143,7 +141,7 @@ $app->map('/:x+', function($x) {
 })->via('OPTIONS');
 
 // TODO: route to clear storage
-$app->get('/clear', 'cors', function() use ($app) {
+$app->post('/session/clear', 'cors', function() use ($app) {
     if ($app->storage instanceof APCStorage) {
         $app->storage->clear();
     }
