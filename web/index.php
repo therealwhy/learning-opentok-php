@@ -143,10 +143,13 @@ $app->map('/:x+', function($x) {
 
 // TODO: route to clear storage
 $app->get('/session/clear', 'cors', function () use ($app) {
+    $bob = "hello";
     if ($app->storage instanceof APCStorage) {
-        $app->storage->eliminate('sessionId');
+      $app->storage->eliminate('sessionId');
+      $bob = $app->storage->retrieve('sessionId');
     }
-    $responseData = array();
+  
+    $responseData = array($bob);
 
     $app->response->headers->set('Content-Type', 'application/json');
     echo json_encode($responseData);
