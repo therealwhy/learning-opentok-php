@@ -94,21 +94,6 @@ $app->post('/start/:sessionId', 'cors', function ($sessionId) use ($app) {
     echo json_encode($responseData);
 });
 
-$app->post('/kill/:sessionId', 'cors', function ($sessionId) use ($app) {
-    if ($app->storage instanceof APCStorage) {
-        $app->storage->clear();
-    }
-    $responseData = array();
-
-    $app->response->headers->set('Content-Type', 'application/json');
-    echo json_encode($responseData);
-//    $archive = $app->opentok->startArchive($sessionId, 'Getting Started Sample Archive');
-//    $app->response->headers->set('Content-Type', 'application/json');
-//
-//    $responseData = array('archive' => $archive);
-//    echo json_encode($responseData);
-});
-
 // Stop Archiving and return the Archive ID
 $app->post('/stop/:archiveId', 'cors', function ($archiveId) use ($app) {
     $archive = $app->opentok->stopArchive($archiveId);
@@ -159,7 +144,7 @@ $app->map('/:x+', function($x) {
 // TODO: route to clear storage
 $app->get('/session/clear', 'cors', function () use ($app) {
     if ($app->storage instanceof APCStorage) {
-        $app->storage->clear();
+        $app->storage->eliminate('sessionId');
     }
     $responseData = array();
 
