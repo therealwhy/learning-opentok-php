@@ -71,7 +71,7 @@ $app->container->singleton('sessionId', function() use ($app) {
 });
 
 // Route to return the SessionID and token as a json
-$app->get('/session', 'cors', function () use ($app) {
+$app->get('/sessionCREATE', 'cors', function () use ($app) {
 
     $token = $app->opentok->generateToken($app->sessionId);
 
