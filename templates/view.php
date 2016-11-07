@@ -8,7 +8,7 @@
 
 <body>
     <h1>Waiting for the archive...</h1>
-    <p>This page will refresh until the archive status is available.</p>
+    <p>This page will refresh until the archive ddd  status is available.</p>
 
     <script>
         setTimeout(function() {
