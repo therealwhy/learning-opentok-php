@@ -223,7 +223,7 @@ for free. For that reason, you may choose to experiment with this code and deplo
 
 Use the button at the top of the README to deploy to Heroku in one click!
 
-If you'd like to deploy manually, here is some additional information:
+If you'd like to deploy manually, here is some additional information:fff
 
 *  The provided `Procfile` describes a web process which can launch this application.
 
